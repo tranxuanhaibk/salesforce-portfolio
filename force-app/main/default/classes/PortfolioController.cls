@@ -20,4 +20,36 @@ public with sharing class PortfolioController {
         }
     }
 
+
+    @AuraEnabled
+    public static void handleContactMe(String email, String message, String guestName){
+        try {
+            Guest_Case__c gc = new Guest_Case__c(
+                Email__c = email,
+                Guest_Name__c = guestName,
+                Message__c = message
+            );
+
+            insert gc;
+
+            EmailTemplate tempplate = [SELECT Id FROM EmailTemplate WHERE DeveloperName = 'Contact_Me' LIMIT 1];
+
+            sendEmail(gc.Id, tempplate.Id);
+        } catch (Exception e) {
+            throw new AuraHandledException(e.getMessage());
+        }
+    }
+
+    public static void sendEmail(Id objectId, Id templateId) {
+        EmailService.EmailData data = new EmailService.EmailData();
+        data.senderName = 'TXH-Ai System';
+        data.addresses = new List<String>{'tranxuanhai.bkdn@gmail.com'};
+        data.isManual = false;
+        data.isWhatId = true;
+        data.whatId = objectId;
+        data.isTemplateId = true;
+        data.templateId = templateId;
+
+        EmailService.sendEmails(new List<EmailService.EmailData>{data});
+    }
 }
