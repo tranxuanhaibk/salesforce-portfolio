@@ -12,7 +12,8 @@ public with sharing class PortfolioController {
     public static List<Work_History__c> getWorkHistories(){
         try {
             return [
-                SELECT Id, End_Date__c, Start_Date__c, Company_Name__c, Description__c, Period_Time__c, Title__c, Skills__c
+                SELECT Id, End_Date__c, Start_Date__c, Company_Name__c, 
+                Description__c, Period_Time__c, Title__c, Skills__c, Company_Image_URL__c
                 FROM Work_History__c ORDER BY Start_Date__c DESC];
         } catch (Exception e) {
             throw new AuraHandledException(e.getMessage());
