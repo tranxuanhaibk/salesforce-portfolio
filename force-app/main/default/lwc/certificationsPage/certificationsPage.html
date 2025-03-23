@@ -1,0 +1,16 @@
+<template>
+    <div class="timeline">
+        <p class="title">Salesforce Certification</p>
+        <template for:each={certs} for:item="cert">
+            <div key={cert.id} class="timeline-item">
+                <div class="image-container">
+                    <img src={cert.Cert_Image_Url__c} alt="Certification Image" class="event-image" />
+                </div>
+                <div class="timeline-content">
+                    <a href={cert.Certification_Link__c} class="certname">{cert.Name}</a>
+                    <p>{cert.Issued_Date__c}</p>
+                </div>
+            </div>
+        </template>
+    </div>
+</template>

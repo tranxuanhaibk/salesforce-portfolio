@@ -1,0 +1,72 @@
+<template>
+    <div class="home-container">
+        <!-- Hero Section + Particle Animation -->
+        <section class="hero-section">
+            <div class="particle-bg"></div>
+            <div class="hero-content">
+                <div class="avatar-container">
+                    <img src={my_Avatar} alt="Tran Xuan Hai" class="avatar" />
+                </div>
+                <h1 class="hero-title">I'm Tran Xuan Hai</h1>
+                <p class="hero-subtitle">A Passionate Salesforce Developer & Community Connection</p>
+                <p class="hero-description">
+                    I hold multiple Salesforce certifications and am a Certified Application Architect.
+                    These certifications reflect my dedication to mastering the Salesforce ecosystem and staying ahead of the curve.
+                    In addition to my Salesforce expertise, I possess strong skills in web development, particularly in HTML and CSS.
+                    My proficiency extends to designing and building Salesforce Experience Cloud solutions, where I've worked with Apex, Aura Components, and Lightning Web Components.
+                    I can configure Salesforce's content management system (CMS) as well as Salesforce Knowledge to create efficient and dynamic content solutions.
+                </p>
+                <lightning-button 
+                    variant="brand" 
+                    label="Hire Me" 
+                    onclick={navigateToContact} 
+                    class="hero-cta">
+                </lightning-button>
+            </div>
+        </section>
+
+        <!-- Skills Section Icons -->
+        <section class="skills-section">
+            <h2 class="section-title">My Skills</h2>
+            <div class="skills-container">
+                <template for:each={skills} for:item="skill">
+                    <div key={skill.name} class="skill-item">
+                        <div class="skill-icon">
+                            <lightning-icon icon-name={skill.icon} size="medium" class="animated-icon"></lightning-icon>
+                        </div>
+                        <div class="skill-details">
+                            <span class="skill-name">{skill.name}</span>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style={skill.progressStyle}></div>
+                            </div>
+                        </div>
+                    </div>
+                </template>
+            </div>
+        </section>
+
+        <!-- Testimonials Section + Slide-In Animation -->
+        <section class="testimonials-section">
+            <h2 class="section-title">What People Say</h2>
+            <div class="testimonials-container">
+                <template for:each={testimonials} for:item="testimonial">
+                    <div key={testimonial.id} class="testimonial-card">
+                        <p class="testimonial-text">"{testimonial.text}"</p>
+                        <div class="testimonial-author">
+                            <span class="author-name">{testimonial.author}</span>
+                            <span class="author-role">{testimonial.role}</span>
+                        </div>
+                    </div>
+                </template>
+            </div>
+        </section>
+
+        <!-- Navigation Tabs -->
+        <section class="navigation-tabs">
+            <div class="tab" onclick={navigateToWorkHistory}>Work History</div>
+            <div class="tab" onclick={navigateToCertifications}>Certifications</div>
+            <div class="tab" onclick={navigateToProjects}>My Projects</div>
+            <div class="tab" onclick={navigateToContact}>Contact Me</div>
+        </section>
+    </div>
+</template>

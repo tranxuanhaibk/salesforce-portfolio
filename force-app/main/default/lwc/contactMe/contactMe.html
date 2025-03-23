@@ -1,0 +1,58 @@
+<template>
+    <div class="contact-container">
+        <h2 class="section-title">Contact Me</h2>
+        <div class="contact-content">
+            <div class="contact-info">
+                <div class="info-item">
+                    <lightning-icon icon-name="utility:email" size="medium" class="icon"></lightning-icon>
+                    <span>tranxuanhai.bkdn@gmail.com</span>
+                </div>
+                <div class="info-item">
+                    <lightning-icon icon-name="utility:phone_portrait" size="medium" class="icon"></lightning-icon>
+                    <span>+84 865 787 769</span>
+                </div>
+                <div class="info-item">
+                    <lightning-icon icon-name="utility:world" size="medium" class="icon"></lightning-icon>
+                    <span>https://www.linkedin.com/in/tranxuanhai/</span>
+                </div>
+            </div>
+            <form class="contact-form" onsubmit={handleSubmit}>
+                <div class="form-group">
+                    <lightning-input 
+                        type="text" 
+                        label="Name" 
+                        name="name" 
+                        required 
+                        onchange={handleInputChange}>
+                    </lightning-input>
+                </div>
+                <div class="form-group">
+                    <lightning-input 
+                        type="email" 
+                        label="Email" 
+                        name="email" 
+                        required 
+                        onchange={handleInputChange}>
+                    </lightning-input>
+                </div>
+                <div class="form-group">
+                    <lightning-textarea 
+                        label="Message" 
+                        name="message" 
+                        required 
+                        onchange={handleInputChange}>
+                    </lightning-textarea>
+                </div>
+                <lightning-button 
+                    variant="brand" 
+                    label="Send Message" 
+                    type="submit" 
+                    class="submit-button">
+                </lightning-button>
+            </form>
+        </div>
+        <div if:true={showSuccess} class="success-message">
+            Thank you! Your message has been sent successfully.
+        </div>
+    </div>
+</template>

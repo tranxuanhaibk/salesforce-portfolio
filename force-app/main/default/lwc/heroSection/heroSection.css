@@ -1,0 +1,165 @@
+
+/* homePage.css */
+.home-container {
+    font-family: 'Arial', sans-serif;
+    position: relative;
+    min-height: 80vh;
+    background: url('/MyPortfolio/webruntime/org-asset/c77a7c3506/resource/081gK0000001QEz') no-repeat center center fixed;
+    background-size: cover;
+    color: white; /* Đặt màu chữ mặc định là trắng để nổi trên nền vũ trụ */
+}
+
+/* Star Layer */
+.stars-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    pointer-events: none;
+    animation: moveStars 50s linear infinite;
+}
+
+.stars-layer::before {
+    content: '';
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: white;
+    border-radius: 50%;
+    box-shadow: 
+         /* Small Star */
+        50px 30px 0 0 white,
+        150px 200px 0 0 white,
+        300px 50px 0 0 white,
+        450px 300px 0 0 white,
+        /* big Star */
+        600px 150px 2px 2px white,
+        750px 400px 3px 3px white,
+        /* Small Star */
+        900px 100px 0 0 white,
+        1050px 250px 0 0 white,
+        /* big Star */
+        1200px 350px 4px 4px white,
+        1350px 50px 2px 2px white;
+    animation: twinkle 2s infinite alternate;
+}
+
+.stars-layer-2 {
+    animation: moveStars 30s linear infinite reverse;
+}
+
+.stars-layer-2::before {
+    content: '';
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: white;
+    border-radius: 50%;
+    box-shadow: 
+        /* Small Star */
+        100px 50px 0 0 white,
+        200px 300px 0 0 white,
+        350px 150px 0 0 white,
+        /* big Star */
+        500px 400px 3px 3px white,
+        650px 200px 2px 2px white,
+        /* Small Star */
+        800px 100px 0 0 white,
+        950px 350px 0 0 white,
+        /* big Star */
+        1100px 250px 4px 4px white,
+        1250px 150px 2px 2px white,
+        1400px 300px 3px 3px white;
+    animation: twinkle 1.5s infinite alternate;
+}
+
+@keyframes moveStars {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-2000px); }
+}
+
+@keyframes twinkle {
+    0% { opacity: 0.3; }
+    100% { opacity: 1; }
+}
+
+/* Spaceship */
+.spaceship-container {
+    position: absolute;
+    top: 10%;
+    left: -150px; /* Bắt đầu ngoài màn hình bên trái */
+    z-index: 1;
+    animation: flySpaceship 20s linear infinite;
+}
+
+.spaceship {
+    width: 120px;
+    height: auto;
+}
+
+@keyframes flySpaceship {
+    0% { 
+        transform: translate(0, 0) rotate(0deg); 
+    }
+    100% { 
+        transform: translate(2000px, -20px) rotate(15deg); /* Bay chéo lên, không mờ dần */
+    }
+}
+
+/* Satellite */
+.satellite-container {
+    position: absolute;
+    top: 70%;
+    left: -100px; /* Bắt đầu ngoài màn hình bên trái */
+    z-index: 1;
+    animation: flySatellite 25s linear infinite;
+}
+
+.satellite {
+    width: 80px;
+    height: auto;
+}
+
+@keyframes flySatellite {
+    0% { transform: translate(0, 0) rotate(0deg); }
+    100% { transform: translate(2200px, -80px) rotate(35deg); } /* Bay chéo từ trái sang phải, hướng lên trên */
+}
+
+/* Universe Header với Phi Hành Gia */
+.universe-header {
+    position: relative;
+    height: 200px;
+    background: transparent;
+    overflow: hidden;
+}
+
+/* Astronaut */
+.astronaut-container {
+    position: absolute;
+    top: 20%;
+    left: 10%;
+    z-index: 1;
+}
+
+.astronaut {
+    width: 100px;
+    height: auto;
+    animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+    0% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(20px) rotate(5deg); }
+    100% { transform: translateY(0) rotate(0deg); }
+}
+
+@media only screen and (max-width: 768px) {
+    .home-container {
+        background-attachment: scroll; /* Thay fixed thành scroll để tránh lỗi trên di động */
+        background-size: cover; /* Đảm bảo hình ảnh phủ kín, nhưng không bị cắt quá nhiều */
+        background-position: center bottom; /* Ưu tiên hiển thị phần dưới của hình ảnh (Trái Đất) */
+        min-height: 100vh; /* Đảm bảo chiều cao tối thiểu là toàn màn hình trên điện thoại */
+    }
+}
