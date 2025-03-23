@@ -1,5 +1,10 @@
 <template>
-    <div class="timeline">
+    <div if:false={isLoaded} class="slds-is-relative">
+        <lightning-spinner
+            alternative-text="Loading..." variant="brand">
+        </lightning-spinner>
+    </div>
+    <div class="timeline" if:true={isLoaded}>
         <p class="title">Salesforce Certification</p>
         <template for:each={certs} for:item="cert">
             <div key={cert.id} class="timeline-item">

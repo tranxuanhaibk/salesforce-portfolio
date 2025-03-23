@@ -9,6 +9,7 @@
         <div class="timeline">
             <template for:each={data} for:item="job">
                 <div key={job.Id} class="timeline-item">
+                    <div style={job.imgStyle} class="edu-img"></div>
                     <div class="timeline-content">
                         <div class="job-period">{job.Period_Time__c}</div>
                         <h3 class="job-title">{job.Title__c}</h3>
@@ -27,6 +28,7 @@
         <h2 class="section-title">Education</h2>
         <div class="timeline">
             <div class="timeline-item">
+                <div style={backgroundStyle} class="edu-img"></div>
                 <div class="timeline-content">
                     <div class="job-period">August 2017 - August 2022</div>
                     <h3 class="job-title">Da Nang University Science and Technology</h3>

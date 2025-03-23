@@ -6,7 +6,7 @@
     min-height: 80vh;
     background: url('/MyPortfolio/webruntime/org-asset/c77a7c3506/resource/081gK0000001QEz') no-repeat center center fixed;
     background-size: cover;
-    color: white; /* Đặt màu chữ mặc định là trắng để nổi trên nền vũ trụ */
+    color: white;
 }
 
 /* Star Layer */
@@ -104,7 +104,7 @@
         transform: translate(0, 0) rotate(0deg); 
     }
     100% { 
-        transform: translate(2000px, -20px) rotate(15deg); /* Bay chéo lên, không mờ dần */
+        transform: translate(2000px, -20px) rotate(15deg);
     }
 }
 
@@ -112,7 +112,7 @@
 .satellite-container {
     position: absolute;
     top: 70%;
-    left: -100px; /* Bắt đầu ngoài màn hình bên trái */
+    left: -100px;
     z-index: 1;
     animation: flySatellite 25s linear infinite;
 }
@@ -124,10 +124,10 @@
 
 @keyframes flySatellite {
     0% { transform: translate(0, 0) rotate(0deg); }
-    100% { transform: translate(2200px, -80px) rotate(35deg); } /* Bay chéo từ trái sang phải, hướng lên trên */
+    100% { transform: translate(2200px, -80px) rotate(35deg); }
 }
 
-/* Universe Header với Phi Hành Gia */
+/* Universe Header + Astronaut*/
 .universe-header {
     position: relative;
     height: 200px;
@@ -157,9 +157,9 @@
 
 @media only screen and (max-width: 768px) {
     .home-container {
-        background-attachment: scroll; /* Thay fixed thành scroll để tránh lỗi trên di động */
-        background-size: cover; /* Đảm bảo hình ảnh phủ kín, nhưng không bị cắt quá nhiều */
-        background-position: center bottom; /* Ưu tiên hiển thị phần dưới của hình ảnh (Trái Đất) */
-        min-height: 100vh; /* Đảm bảo chiều cao tối thiểu là toàn màn hình trên điện thoại */
+        background-attachment: scroll;
+        background-size: cover;
+        background-position: center bottom;
+        min-height: 100vh;
     }
 }
