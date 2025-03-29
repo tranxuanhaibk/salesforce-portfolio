@@ -1,0 +1,32 @@
+<template>
+    <div class="container" lwc:if={isLoaded}>
+        <div class="post-list-container">
+            <template if:true={articleList}>
+                <template for:each={articleList} for:item="post">
+                    <div key={post.Id} class="post-card">
+                        <div class="post-image" style={post.imageUrl}></div>
+                        <div class="post-content">
+                            <h2 class="post-title">{post.Title__c}</h2>
+                            <div class="post-meta">
+                                <span class="author">{post.author}</span>
+                                <span class="date">{post.date}</span>
+                            </div>
+                            <p class="post-description">
+                                {post.Summary__c}
+                            </p>
+                            <lightning-button
+                                class="read-more"
+                                label="Read More" 
+                                onclick={handlePostClick} 
+                                data-id={post.Id}>
+                            </lightning-button>
+                        </div>
+                    </div>
+                </template>
+            </template>
+            <template if:false={articleList}>
+                <p>Không có bài post nào.</p>
+            </template>
+        </div>
+    </div>
+</template>

@@ -31,7 +31,7 @@ export default class HomeSection extends NavigationMixin(LightningElement) {
         this[NavigationMixin.Navigate]({
             type: 'comm__namedPage',
             attributes: {
-                page: 'Contact_Me__c'
+                name: 'Contact_Me__c'
             }
         });
     }
@@ -49,17 +49,17 @@ export default class HomeSection extends NavigationMixin(LightningElement) {
         this[NavigationMixin.Navigate]({
             type: 'comm__namedPage',
             attributes: {
-                apiName: 'Certifications__c',
+                name: 'Certifications__c',
             }
         });
     }
 
-    navigateToProjects() {
-        this[NavigationMixin.Navigate]({
-            type: 'comm__namedPage',
-            attributes: {
-                apiName: 'SitePageB',
-            }
-        });
-    }
+    // navigateToProjects() {
+    //     this[NavigationMixin.Navigate]({
+    //         type: 'comm__namedPage',
+    //         attributes: {
+    //             name: 'SitePageB',
+    //         }
+    //     });
+    // }
 }
