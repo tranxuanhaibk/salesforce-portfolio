@@ -12,14 +12,16 @@ public class EmailService {
 
         public Boolean isTemplateId;
         public Id templateId;
+        public Id targetObjectId;
     }
 
     public static void sendEmails(List<EmailData> dataList) {
         List<Messaging.SingleEmailMessage> emailsWithToAddresses = new List<Messaging.SingleEmailMessage>();
         for (EmailData emailData : dataList) {
             Messaging.SingleEmailMessage email = new Messaging.SingleEmailMessage();
-            email.setToAddresses(emailData.addresses);
-            email.setSaveAsActivity(false);
+            if (emailData.addresses.size() > 0) {
+                email.setToAddresses(emailData.addresses);
+            }
 
             if (emailData.isWhatId) {
                 email.setWhatId(emailData.whatId);  
@@ -27,6 +29,7 @@ public class EmailService {
 
             if (emailData.isTemplateId) {
                 email.setTemplateId(emailData.templateId);
+                email.setTargetObjectId(emailData.targetObjectId);
             }
 
             if (emailData.isManual) {
@@ -35,6 +38,7 @@ public class EmailService {
             }
 
             email.setSenderDisplayName(emailData.senderName);
+            email.setSaveAsActivity(false);
             emailsWithToAddresses.add(email);
         }
 

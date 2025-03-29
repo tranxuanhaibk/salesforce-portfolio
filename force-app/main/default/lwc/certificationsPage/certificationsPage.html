@@ -4,18 +4,27 @@
             alternative-text="Loading..." variant="brand">
         </lightning-spinner>
     </div>
-    <div class="timeline" if:true={isLoaded}>
-        <p class="title">Salesforce Certification</p>
-        <template for:each={certs} for:item="cert">
-            <div key={cert.id} class="timeline-item">
-                <div class="image-container">
-                    <img src={cert.Cert_Image_Url__c} alt="Certification Image" class="event-image" />
+    <div class="certification-container">
+        <h2 class="section-title">Salesforce Certification</h2>
+        <div class="certification-list">
+            <template lwc:if={certs}>
+                <template for:each={certs} for:item="cert">
+                    <div key={cert.Id} class="certification-card">
+                        <div class="certification-image">
+                            <img src={cert.Cert_Image_Url__c} alt={cert.Name} />
+                        </div>
+                        <div class="certification-details">
+                            <h3 class="certification-name">{cert.Name}</h3>
+                            <p class="certification-date">{cert.Issued_Date__c}</p>
+                        </div>
+                    </div>
+                </template>
+            </template>
+            <template lwc:else>
+                <div class="no-certifications">
+                    <p>Chưa có chứng chỉ nào.</p>
                 </div>
-                <div class="timeline-content">
-                    <a href={cert.Certification_Link__c} class="certname">{cert.Name}</a>
-                    <p>{cert.Issued_Date__c}</p>
-                </div>
-            </div>
-        </template>
+            </template>
+        </div>
     </div>
 </template>

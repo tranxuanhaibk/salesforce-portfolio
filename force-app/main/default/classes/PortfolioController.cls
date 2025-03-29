@@ -20,6 +20,26 @@ public with sharing class PortfolioController {
         }
     }
 
+    @AuraEnabled
+    public static List<Article__c> getArticleList(){
+        try {
+            return [SELECT Id, Title__c, Discription__c, Topic_By_Role__c, Article_Image__c, Summary__c FROM Article__c];
+        } catch (Exception e) {
+            throw new AuraHandledException(e.getMessage());
+        }
+    }
+
+    @AuraEnabled
+    public static Article__c getArticleByUniqueId(String uniqueId){
+        try {
+            return [
+                SELECT Id, Title__c, Discription__c, Topic_By_Role__c, Name, Article_Image__c, Summary__c
+                FROM Article__c WHERE Id = :uniqueId]?.get(0);
+        } catch (Exception e) {
+            throw new AuraHandledException(e.getMessage());
+        }
+    }
+
 
     @AuraEnabled
     public static void handleContactMe(String email, String message, String guestName){
@@ -43,12 +63,13 @@ public with sharing class PortfolioController {
     public static void sendEmail(Id objectId, Id templateId) {
         EmailService.EmailData data = new EmailService.EmailData();
         data.senderName = 'TXH-Ai System';
-        data.addresses = new List<String>{'tranxuanhai.bkdn@gmail.com'};
+        data.addresses = new List<String>();
         data.isManual = false;
         data.isWhatId = true;
         data.whatId = objectId;
         data.isTemplateId = true;
         data.templateId = templateId;
+        data.targetObjectId = [SELECT Id FROM User WHERE Name = 'Tran Xuan Hai' LIMIT 1].Id;
 
         EmailService.sendEmails(new List<EmailService.EmailData>{data});
     }

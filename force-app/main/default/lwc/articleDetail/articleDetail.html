@@ -1,0 +1,33 @@
+<template>
+    <lightning-card>
+        <div slot="title" class="custom-header">
+            <h2>Article Detail</h2>
+        </div>
+        <div class="post-container">
+            <template lwc:if={article}>
+                <div class="post-content">
+                    <h1 class="post-title">{article.Title__c}</h1>
+                    <div class="post-meta">
+                        <p><strong>Summary:</strong> {article.Summary__c}</p>
+                    </div>
+                    <div class="post-body">
+                        <lightning-formatted-rich-text value={article.Discription__c}>
+                        </lightning-formatted-rich-text>
+                    </div>
+                    <div class="post-actions">
+                        <lightning-button 
+                            label="Back" 
+                            variant="brand" 
+                            onclick={handleBack}>
+                        </lightning-button>
+                    </div>
+                </div>
+            </template>
+            <template lwc:else>
+                <div class="no-post">
+                    <p>No post.</p>
+                </div>
+            </template>
+        </div>
+    </lightning-card>
+</template>
