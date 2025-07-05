@@ -23,7 +23,10 @@ public with sharing class PortfolioController {
     @AuraEnabled
     public static List<Article__c> getArticleList(){
         try {
-            return [SELECT Id, Title__c, Discription__c, Topic_By_Role__c, Article_Image__c, Summary__c FROM Article__c];
+            return [
+                SELECT Id, Title__c, Discription__c, Topic_By_Role__c, Article_Image__c, Summary__c, CreatedBy.Name, CreatedDate
+                FROM Article__c
+            ];
         } catch (Exception e) {
             throw new AuraHandledException(e.getMessage());
         }
@@ -33,7 +36,7 @@ public with sharing class PortfolioController {
     public static Article__c getArticleByUniqueId(String uniqueId){
         try {
             return [
-                SELECT Id, Title__c, Discription__c, Topic_By_Role__c, Name, Article_Image__c, Summary__c
+                SELECT Id, Title__c, Discription__c, Topic_By_Role__c, Name, Article_Image__c, Summary__c, CreatedBy.Name, CreatedDate
                 FROM Article__c WHERE Id = :uniqueId]?.get(0);
         } catch (Exception e) {
             throw new AuraHandledException(e.getMessage());

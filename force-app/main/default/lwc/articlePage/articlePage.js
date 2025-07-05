@@ -7,11 +7,6 @@ export default class ArticlePage extends NavigationMixin(LightningElement) {
     isLoaded = false;
     articleList=[];
 
-    get post1Background() {
-        return `background-image: url('${myAvatar}');`;
-    }
-
-
     connectedCallback() {
         this.isLoaded = false;
         this._getArticleList();
@@ -24,6 +19,8 @@ export default class ArticlePage extends NavigationMixin(LightningElement) {
                 this.articleList = this.articleList.map(article => {
                     return {
                         ...article,
+                        author: article.CreatedBy.Name,
+                        datePost: article.CreatedDate,
                         imageUrl: `background-image: url('${article.Article_Image__c}');`
                     }
                 });
